@@ -93,7 +93,6 @@
                                         <DataGridTextColumn Header="Цена" Binding="{Binding стоимость}" />
                                     </DataGrid.Columns>
                                 </DataGrid>
-                                <Label x:Name="Total"/>
                                 <Label Content=" руб." Style="{StaticResource Total}"/>
                             </StackPanel>
                             <Button x:Name="CompleteTheOrder" Click="Break" Padding="0"  HorizontalAlignment="Right" Content="   Завершить заказ   " Height="50" Background="#FF47472D" Foreground="#FFF0DEAE" FontFamily="Sitka Heading" FontSize="20" BorderBrush="#FF47472D" Margin="10 0" VerticalAlignment="Top" HorizontalContentAlignment="Center"/>

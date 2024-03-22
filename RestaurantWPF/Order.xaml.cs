@@ -55,7 +55,6 @@ namespace RestaurantWPF
 
                 orderDetailsGrid.ItemsSource = dataTable.DefaultView;
                 TotalCost.ItemsSource = dataTable1.DefaultView;
-                Total.Content = dataTable1.DefaultView;
 
             }
         }
