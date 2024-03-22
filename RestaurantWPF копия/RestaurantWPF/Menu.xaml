@@ -1,0 +1,286 @@
+﻿<Window x:Class="RestaurantWPF.Menu"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:RestaurantWPF"
+        xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
+        mc:Ignorable="d"
+        Title="Menu" Height="450" Width="800" Background="#FFF0DEAE" WindowStartupLocation="CenterScreen">
+
+    <Window.Resources>
+        <Style TargetType="Label" x:Key="Heading">
+            <Setter Property="Height" Value="52"/>
+            <Setter Property="Foreground" Value="#FF47472D"/>
+            <Setter Property="FontFamily" Value="Sitka Heading"/>
+            <Setter Property="FontSize" Value="36"/>
+            <Setter Property="FontWeight" Value="Bold"/>
+        </Style>
+    </Window.Resources>
+
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="0.25*"/>
+            <RowDefinition Height="*"/>
+        </Grid.RowDefinitions>
+
+        <Grid Grid.Row="1">
+            <Border Grid.Row="0" Grid.RowSpan="2" Background="#FFF0DEAE" BorderBrush="#FF47472D" BorderThickness="1.5" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" Margin="10 0 10 10">
+                <Border.Effect>
+                    <DropShadowEffect BlurRadius="25" Color="LightGray" ShadowDepth="0"/>
+                </Border.Effect>
+            </Border>
+        </Grid>
+        <Label x:Name="ReastaurantName" Style="{StaticResource Heading}" Grid.Row="0" Grid.ColumnSpan="2" Content="ГАСТРОНОМИЯ" HorizontalAlignment="Center" VerticalAlignment="Center" />
+        <Button x:Name="OrderButton" HorizontalAlignment="Right" Click="ButtonToOrder" Content="Заказ" IsEnabled="True" Height="50" Background="#FF47472D" Foreground="#FFF0DEAE" FontFamily="Sitka Heading" FontSize="20" BorderBrush="#FF47472D" Margin="10" HorizontalContentAlignment="Center"/>
+
+        
+
+        <Grid Grid.Column="1" Grid.Row="1">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="*"/>
+                <ColumnDefinition Width="*"/>
+            </Grid.ColumnDefinitions>
+            <Grid.RowDefinitions>
+                <RowDefinition Height="*"/>
+                <RowDefinition Height="*"/>
+                <RowDefinition Height="*"/>
+            </Grid.RowDefinitions>
+
+            <!-- Паста -->
+            <Grid Grid.Column="0" Grid.Row="0" Margin="0">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="0.75*"/>
+                    <ColumnDefinition Width="*"/>
+                </Grid.ColumnDefinitions>
+                <Grid Grid.Column="0">
+                    <Image Source="/Images/Pasta.png"/>
+                </Grid>
+                <Grid Grid.Column="10">
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="*"/>
+                        <ColumnDefinition Width="0.4*"/>
+                    </Grid.ColumnDefinitions>
+                    <Grid Grid.Column="0">
+                        <StackPanel Margin="0 15 0 0">
+                            <TextBlock x:Name="PastaName" Text="Паста Болоньезе" TextWrapping="Wrap" FontFamily="Sitka Heading" FontSize="15" VerticalAlignment="Top" Margin="0 10 0 0" Foreground="#FF47472D"/>
+                            <TextBlock Text="Итальянская спагетти, подается с богатым мясным соусом, насыщенным ароматом томатов и специй." TextWrapping="Wrap" FontFamily="Sitka Heading" FontSize="10" VerticalAlignment="Top" Foreground="#FF47472D"/>
+                        </StackPanel>
+                    </Grid>
+                    <Grid Grid.Column="1">
+                        <StackPanel Margin="0 15 10 0">
+                            <StackPanel Orientation="Horizontal" HorizontalAlignment="Right">
+                                <TextBlock x:Name="PastaPrice" Text="250" TextWrapping="Wrap" FontFamily="Sitka Heading" FontSize="15" HorizontalAlignment="Right" Margin="0 10 0 0" Foreground="#FF47472D"/>
+                                <TextBlock Text=" р." TextWrapping="Wrap" FontFamily="Sitka Heading" FontSize="15" HorizontalAlignment="Right" Margin="0 10 0 0" Foreground="#FF47472D"/>
+                            </StackPanel>
+                            <TextBlock Text="150гр." TextWrapping="Wrap" FontFamily="Sitka Heading" FontSize="10" HorizontalAlignment="Right" Foreground="#FF47472D"/>
+                            <Button x:Name="Pasta" Click="PastaToOrder" Padding="0" Height="25" Width="25" HorizontalAlignment="Right" Margin="0 10" Background="#FF47472D" BorderBrush="#FF47472D">
+                                <Button.Content>
+                                    <StackPanel>
+                                        <Image Source="/Images/Plus.png" Width="20" Height="20"/>
+                                    </StackPanel>
+                                </Button.Content>
+                            </Button>
+                        </StackPanel>
+                    </Grid>
+                </Grid>
+            </Grid>
+
+            <!-- Картошка Фри -->
+            <Grid Grid.Column="1" Grid.Row="0" Margin="0 0 25 0">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="0.75*"/>
+                    <ColumnDefinition Width="*"/>
+                </Grid.ColumnDefinitions>
+                <Grid Grid.Column="0">
+                    <Image Source="/Images/Free.png" Margin="15"/>
+                </Grid>
+                <Grid Grid.Column="10">
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="*"/>
+                        <ColumnDefinition Width="0.4*"/>
+                    </Grid.ColumnDefinitions>
+                    <Grid Grid.Column="0">
+                        <StackPanel Margin="0 15 0 0">
+                            <TextBlock x:Name="FreeName" Text="Картофель Фри" TextWrapping="Wrap" FontFamily="Sitka Heading" FontSize="15" VerticalAlignment="Top" Margin="0 10 0 0" Foreground="#FF47472D"/>
+                            <TextBlock Text="Картофельные ломтики, жареные до хрустящей золотистой корки." TextWrapping="Wrap" FontFamily="Sitka Heading" FontSize="10" VerticalAlignment="Top" Foreground="#FF47472D"/>
+                        </StackPanel>
+                    </Grid>
+                    <Grid Grid.Column="1">
+                        <StackPanel Margin="0 15 10 0">
+                            <StackPanel Orientation="Horizontal" HorizontalAlignment="Right">
+                                <TextBlock x:Name="FreePrice" Text="150" TextWrapping="Wrap" FontFamily="Sitka Heading" FontSize="15" HorizontalAlignment="Right" Margin="0 10 0 0" Foreground="#FF47472D"/>
+                                <TextBlock Text=" р." TextWrapping="Wrap" FontFamily="Sitka Heading" FontSize="15" HorizontalAlignment="Right" Margin="0 10 0 0" Foreground="#FF47472D"/>
+                            </StackPanel>
+                            <TextBlock Text="100гр." TextWrapping="Wrap" FontFamily="Sitka Heading" FontSize="10" HorizontalAlignment="Right" Foreground="#FF47472D"/>
+                            <Button x:Name="Free" Click="FreeToOrder" Padding="0" Height="25" Width="25" HorizontalAlignment="Right" Margin="0 10" Background="#FF47472D" BorderBrush="#FF47472D">
+                                <Button.Content>
+                                    <StackPanel>
+                                        <Image Source="/Images/Plus.png" Width="20" Height="20"/>
+                                    </StackPanel>
+                                </Button.Content>
+                            </Button>
+                        </StackPanel>
+                    </Grid>
+                </Grid>
+            </Grid>
+
+            <!-- Стейк -->
+            <Grid Grid.Column="0" Grid.Row="1" Margin="0">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="0.75*"/>
+                    <ColumnDefinition Width="*"/>
+                </Grid.ColumnDefinitions>
+                <Grid Grid.Column="0">
+                    <Image Source="/Images/Steak.png" Margin="10"/>
+                </Grid>
+                <Grid Grid.Column="10">
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="*"/>
+                        <ColumnDefinition Width="0.4*"/>
+                    </Grid.ColumnDefinitions>
+                    <Grid Grid.Column="0">
+                        <StackPanel Margin="0 15 0 0">
+                            <TextBlock x:Name="SteakName" Text="Стейк" TextWrapping="Wrap" FontFamily="Sitka Heading" FontSize="15" VerticalAlignment="Top" Margin="0 10 0 0" Foreground="#FF47472D"/>
+                            <TextBlock Text="Сочный стейк, приготовленный на гриле, полностью выражающий свой мясной вкус." TextWrapping="Wrap" FontFamily="Sitka Heading" FontSize="10" VerticalAlignment="Top" Foreground="#FF47472D"/>
+                        </StackPanel>
+                    </Grid>
+                    <Grid Grid.Column="1">
+                        <StackPanel Margin="0 15 10 0">
+                            <StackPanel Orientation="Horizontal" HorizontalAlignment="Right">
+                                <TextBlock x:Name="SteakPrice" Text="300" TextWrapping="Wrap" FontFamily="Sitka Heading" FontSize="15" HorizontalAlignment="Right" Margin="0 10 0 0" Foreground="#FF47472D"/>
+                                <TextBlock Text=" р." TextWrapping="Wrap" FontFamily="Sitka Heading" FontSize="15" HorizontalAlignment="Right" Margin="0 10 0 0" Foreground="#FF47472D"/>
+                            </StackPanel>
+                            <TextBlock Text="250гр." TextWrapping="Wrap" FontFamily="Sitka Heading" FontSize="10" HorizontalAlignment="Right" Foreground="#FF47472D"/>
+                            <Button x:Name="Steak" Click="SteakToOrder" Padding="0" Height="25" Width="25" HorizontalAlignment="Right" Margin="0 10" Background="#FF47472D" BorderBrush="#FF47472D">
+                                <Button.Content>
+                                    <StackPanel>
+                                        <Image Source="/Images/Plus.png" Width="20" Height="20"/>
+                                    </StackPanel>
+                                </Button.Content>
+                            </Button>
+                        </StackPanel>
+                    </Grid>
+                </Grid>
+            </Grid>
+
+            <!-- Пицца -->
+            <Grid Grid.Column="1" Grid.Row="1" Margin="0 0 25 0">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="0.75*"/>
+                    <ColumnDefinition Width="*"/>
+                </Grid.ColumnDefinitions>
+                <Grid Grid.Column="0">
+                    <Image Source="/Images/Pizza.png" Margin="10"/>
+                </Grid>
+                <Grid Grid.Column="10">
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="*"/>
+                        <ColumnDefinition Width="0.4*"/>
+                    </Grid.ColumnDefinitions>
+                    <Grid Grid.Column="0">
+                        <StackPanel Margin="0 15 0 0">
+                            <TextBlock x:Name="PizzaName" Text="Пицца Пепперони" TextWrapping="Wrap" FontFamily="Sitka Heading" FontSize="15" VerticalAlignment="Top" Margin="0 10 0 0" Foreground="#FF47472D"/>
+                            <TextBlock Text="Тонкое тесто, сочные кусочки пикантной пепперони и обилие сыра." TextWrapping="Wrap" FontFamily="Sitka Heading" FontSize="10" VerticalAlignment="Top" Foreground="#FF47472D"/>
+                        </StackPanel>
+                    </Grid>
+                    <Grid Grid.Column="1">
+                        <StackPanel Margin="0 15 10 0">
+                            <StackPanel Orientation="Horizontal" HorizontalAlignment="Right">
+                                <TextBlock x:Name="PizzaPrice" Text="500" TextWrapping="Wrap" FontFamily="Sitka Heading" FontSize="15" HorizontalAlignment="Right" Margin="0 10 0 0" Foreground="#FF47472D"/>
+                                <TextBlock Text=" р." TextWrapping="Wrap" FontFamily="Sitka Heading" FontSize="15" HorizontalAlignment="Right" Margin="0 10 0 0" Foreground="#FF47472D"/>
+                            </StackPanel>
+                            <TextBlock Text="400гр." TextWrapping="Wrap" FontFamily="Sitka Heading" FontSize="10" HorizontalAlignment="Right" Foreground="#FF47472D"/>
+                            <Button x:Name="Pizza" Click="PizzaToOrder" Padding="0" Height="25" Width="25" HorizontalAlignment="Right" Margin="0 10" Background="#FF47472D" BorderBrush="#FF47472D">
+                                <Button.Content>
+                                    <StackPanel>
+                                        <Image Source="/Images/Plus.png" Width="20" Height="20"/>
+                                    </StackPanel>
+                                </Button.Content>
+                            </Button>
+                        </StackPanel>
+                    </Grid>
+                </Grid>
+            </Grid>
+
+            <!-- Цезарь -->
+            <Grid Grid.Column="0" Grid.Row="2" Margin="0">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="0.75*"/>
+                    <ColumnDefinition Width="*"/>
+                </Grid.ColumnDefinitions>
+                <Grid Grid.Column="0">
+                    <Image Source="/Images/Salad.png" Margin="10"/>
+                </Grid>
+                <Grid Grid.Column="10">
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="*"/>
+                        <ColumnDefinition Width="0.4*"/>
+                    </Grid.ColumnDefinitions>
+                    <Grid Grid.Column="0">
+                        <StackPanel Margin="0 15 0 0">
+                            <TextBlock x:Name="SaladName" Text="Салат Цезарь" TextWrapping="Wrap" FontFamily="Sitka Heading" FontSize="15" VerticalAlignment="Top" Margin="0 10 0 0" Foreground="#FF47472D"/>
+                            <TextBlock Text="Свежий листовой салат с куриной грудкой, сыром, гренками и соусом Цезарь." TextWrapping="Wrap" FontFamily="Sitka Heading" FontSize="10" VerticalAlignment="Top" Foreground="#FF47472D"/>
+                        </StackPanel>
+                    </Grid>
+                    <Grid Grid.Column="1">
+                        <StackPanel Margin="0 15 10 0">
+                            <StackPanel Orientation="Horizontal" HorizontalAlignment="Right">
+                                <TextBlock x:Name="SaladPrice" Text="200" TextWrapping="Wrap" FontFamily="Sitka Heading" FontSize="15" HorizontalAlignment="Right" Margin="0 10 0 0" Foreground="#FF47472D"/>
+                                <TextBlock Text=" р." TextWrapping="Wrap" FontFamily="Sitka Heading" FontSize="15" HorizontalAlignment="Right" Margin="0 10 0 0" Foreground="#FF47472D"/>
+                            </StackPanel>
+                            <TextBlock Text="150гр." TextWrapping="Wrap" FontFamily="Sitka Heading" FontSize="10" HorizontalAlignment="Right" Foreground="#FF47472D"/>
+                            <Button x:Name="Salad" Click="SaladToOrder" Padding="0" Height="25" Width="25" HorizontalAlignment="Right" Margin="0 10" Background="#FF47472D" BorderBrush="#FF47472D">
+                                <Button.Content>
+                                    <StackPanel>
+                                        <Image Source="/Images/Plus.png" Width="20" Height="20"/>
+                                    </StackPanel>
+                                </Button.Content>
+                            </Button>
+                        </StackPanel>
+                    </Grid>
+                </Grid>
+            </Grid>
+
+            <!-- Суп -->
+            <Grid Grid.Column="1" Grid.Row="2" Margin="0 0 25 0">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="0.75*"/>
+                    <ColumnDefinition Width="*"/>
+                </Grid.ColumnDefinitions>
+                <Grid Grid.Column="0">
+                    <Image Source="/Images/Cream_Soup.png" Margin="17"/>
+                </Grid>
+                <Grid Grid.Column="10">
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="*"/>
+                        <ColumnDefinition Width="0.4*"/>
+                    </Grid.ColumnDefinitions>
+                    <Grid Grid.Column="0">
+                        <StackPanel Margin="0 15 0 0">
+                            <TextBlock x:Name="SoupName" Text="Крем Суп" TextWrapping="Wrap" FontFamily="Sitka Heading" FontSize="15" VerticalAlignment="Top" Margin="0 10 0 0" Foreground="#FF47472D"/>
+                            <TextBlock Text="Ароматный томатный крем-суп с нежным вкусом помидоров и приправами." TextWrapping="Wrap" FontFamily="Sitka Heading" FontSize="10" VerticalAlignment="Top" Foreground="#FF47472D"/>
+                        </StackPanel>
+                    </Grid>
+                    <Grid Grid.Column="1">
+                        <StackPanel Margin="0 15 10 0">
+                            <StackPanel Orientation="Horizontal" HorizontalAlignment="Right">
+                                <TextBlock x:Name="SoupPrice" Text="100" TextWrapping="Wrap" FontFamily="Sitka Heading" FontSize="15" HorizontalAlignment="Right" Margin="0 10 0 0" Foreground="#FF47472D"/>
+                                <TextBlock Text=" р." TextWrapping="Wrap" FontFamily="Sitka Heading" FontSize="15" HorizontalAlignment="Right" Margin="0 10 0 0" Foreground="#FF47472D"/>
+                            </StackPanel>
+                            <TextBlock Text="200гр." TextWrapping="Wrap" FontFamily="Sitka Heading" FontSize="10" HorizontalAlignment="Right" Foreground="#FF47472D"/>
+                            <Button x:Name="Soup" Click="SoupToOrder" Padding="0" Height="25" Width="25" HorizontalAlignment="Right" Margin="0 10" Background="#FF47472D" BorderBrush="#FF47472D">
+                                <Button.Content>
+                                    <StackPanel>
+                                        <Image Source="/Images/Plus.png" Width="20" Height="20"/>
+                                    </StackPanel>
+                                </Button.Content>
+                            </Button>
+                        </StackPanel>
+                    </Grid>
+                </Grid>
+            </Grid>
+        </Grid>
+    </Grid>
+</Window>
+    

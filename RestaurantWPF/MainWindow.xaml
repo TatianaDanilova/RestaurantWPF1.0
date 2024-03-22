@@ -1,0 +1,88 @@
+﻿<Window x:Class="RestaurantWPF.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:RestaurantWPF"
+        xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
+        mc:Ignorable="d"
+        Title="MainWindow" Height="450" Width="800" Background="#FFF0DEAE" WindowStartupLocation="CenterScreen">
+
+    <Window.Resources>
+        <Style TargetType="Label" x:Key="Heading">
+            <Setter Property="Foreground" Value="#FF47472D"/>
+            <Setter Property="FontFamily" Value="Sitka Heading"/>
+            <Setter Property="FontSize" Value="28"/>
+            <Setter Property="FontWeight" Value="Bold"/>
+        </Style>
+    </Window.Resources>
+
+
+
+
+    <Grid VerticalAlignment="Stretch" HorizontalAlignment="Stretch">
+
+
+        <Grid>
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition/>
+                <ColumnDefinition/>
+                <ColumnDefinition Width="4*"/>
+                <ColumnDefinition/>
+                <ColumnDefinition/>
+            </Grid.ColumnDefinitions>
+            <Image Grid.Column="1" Source="/Images/Fork.png" Margin="-90 -90 -60 -90" HorizontalAlignment="Center">
+                <Image.Effect>
+                    <DropShadowEffect BlurRadius="10" Color="Gray" ShadowDepth="0"/>
+                </Image.Effect>
+            </Image>
+            <Image Grid.Column="0" Source="/Images/Fork.png" Margin="0 -50 -50 -50" HorizontalAlignment="Center">
+                <Image.Effect>
+                    <DropShadowEffect BlurRadius="10" Color="Gray" ShadowDepth="0"/>
+                </Image.Effect>
+            </Image>
+            <Image Grid.Column="3" Source="/Images/Knife.png" Margin="-60 -90 -90 -90" HorizontalAlignment="Center">
+                <Image.Effect>
+                    <DropShadowEffect BlurRadius="10" Color="Gray" ShadowDepth="0"/>
+                </Image.Effect>
+            </Image>
+            <Image Grid.Column="4" Source="/Images/Spoon.png" Margin="-50 -50 0 -50" HorizontalAlignment="Center">
+                <Image.Effect>
+                    <DropShadowEffect BlurRadius="10" Color="Gray" ShadowDepth="0"/>
+                </Image.Effect>
+            </Image>
+
+            <Grid Grid.Column="2">
+                
+            
+        <Border Margin="0 70" BorderBrush="#FF47472D"  Background="#FFF0DEAE" BorderThickness="1.5" CornerRadius="0">
+            <Border.Effect>
+                <DropShadowEffect BlurRadius="25" Color="LightGray" ShadowDepth="0"/>
+            </Border.Effect>
+                    <Grid>
+                        <Grid.RowDefinitions>
+                            <RowDefinition/>
+                            <RowDefinition/>
+                            <RowDefinition/>
+                            <RowDefinition/>
+                        </Grid.RowDefinitions>
+                        
+                        <Grid Grid.Row="0">
+                            <Label x:Name="ReastaurantName" Margin="0 10 0 0" Style="{StaticResource Heading}" Content="ГАСТРОНОМИЯ" HorizontalAlignment="Center" VerticalAlignment="Center" />
+                        </Grid>
+                        <Grid Grid.Row="1" Margin="35 0 35 30">
+                            <TextBox x:Name="FirstNameBox" materialDesign:HintAssist.Hint="Введите имя" Style="{StaticResource MaterialDesignFloatingHintTextBox}" BorderBrush="#FF47472D" Background="#FFF0DEAE" Foreground="#FF47472D" CaretBrush="#FF47472D" SelectionBrush="#FF47472D" FontFamily="Sitka Heading" TextChanged="FirstNameBox_TextChanged"/>
+                        </Grid>
+                        <Grid Grid.Row="2" Margin="35 0 35 30">
+                            <TextBox x:Name="LastNameBox" materialDesign:HintAssist.Hint="Введите фамилию" Style="{StaticResource MaterialDesignFloatingHintTextBox}" BorderBrush="#FF47472D" Background="#FFF0DEAE" Foreground="#FF47472D" CaretBrush="#FF47472D" SelectionBrush="#FF47472D" FontFamily="Sitka Heading" TextChanged="LastNameBox_TextChanged"/>
+                        </Grid>
+                        <Grid Grid.Row="3" Margin="35 0">
+                            <Button x:Name="RegestratoinButton" Click="ButtonToMenu" IsEnabled="False" Content="Зарегистрироваться" Foreground="#FFF0DEAE" FontFamily="Sitka Heading" FontSize="20" HorizontalContentAlignment="Center" BorderBrush="#FF47472D" Background="#FF47472D" />
+                        </Grid>
+                    </Grid>
+            </Border>
+    </Grid>
+</Grid>
+
+    </Grid>
+</Window>
