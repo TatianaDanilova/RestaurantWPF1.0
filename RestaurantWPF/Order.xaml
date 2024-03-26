@@ -51,7 +51,7 @@
                         <Grid Grid.Row="0">
                             
                             <!-- <База данных -->
-                            <DataGrid x:Name="orderDetailsGrid" Margin="10" FontSize="15" IsReadOnly="True" BorderThickness="1.5" Background="#FFF0DEAE" AutoGenerateColumns="False">
+                            <DataGrid x:Name="OrderDetailsGrid" Margin="10" FontSize="15" IsReadOnly="True" BorderThickness="1.5" Background="#FFF0DEAE" AutoGenerateColumns="False">
                                 <DataGrid.Columns>
                                     <DataGridTextColumn Header="Название блюда" Binding="{Binding [Название блюда]}" Width="*" />
                                     <DataGridTextColumn Header="Цена" Binding="{Binding Цена}" Width="*"/>

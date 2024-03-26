@@ -33,6 +33,13 @@
         </Grid>
         <Label x:Name="ReastaurantName" Style="{StaticResource Heading}" Grid.Row="0" Grid.ColumnSpan="2" Content="ГАСТРОНОМИЯ" HorizontalAlignment="Center" VerticalAlignment="Center" />
         <Button x:Name="OrderButton" HorizontalAlignment="Right" Click="ButtonToOrder" Content="Заказ" IsEnabled="True" Height="50" Background="#FF47472D" Foreground="#FFF0DEAE" FontFamily="Sitka Heading" FontSize="20" BorderBrush="#FF47472D" Margin="10" HorizontalContentAlignment="Center"/>
+        <Button x:Name="ProfileButton" Click="ButtonToProfile" Width="50" Padding="0" HorizontalAlignment="Left" IsEnabled="True" Height="50" Background="#FF47472D" Foreground="#FFF0DEAE" FontFamily="Sitka Heading" FontSize="20" BorderBrush="#FF47472D" Margin="10" HorizontalContentAlignment="Center">
+            <Button.Content>
+                <StackPanel>
+                    <Image Source="/Images/Profile.png" Width="30" Height="30"/>
+                </StackPanel>
+            </Button.Content>
+        </Button>
 
         
 

@@ -55,12 +55,13 @@
             <Grid Grid.Column="2">
                 
             
-        <Border Margin="0 70" BorderBrush="#FF47472D"  Background="#FFF0DEAE" BorderThickness="1.5" CornerRadius="0">
+        <Border Margin="0 50" BorderBrush="#FF47472D"  Background="#FFF0DEAE" BorderThickness="1.5" CornerRadius="0">
             <Border.Effect>
                 <DropShadowEffect BlurRadius="25" Color="LightGray" ShadowDepth="0"/>
             </Border.Effect>
                     <Grid>
                         <Grid.RowDefinitions>
+                            <RowDefinition/>
                             <RowDefinition/>
                             <RowDefinition/>
                             <RowDefinition/>
@@ -76,8 +77,12 @@
                         <Grid Grid.Row="2" Margin="35 0 35 30">
                             <TextBox x:Name="LastNameBox" materialDesign:HintAssist.Hint="Введите фамилию" Style="{StaticResource MaterialDesignFloatingHintTextBox}" BorderBrush="#FF47472D" Background="#FFF0DEAE" Foreground="#FF47472D" CaretBrush="#FF47472D" SelectionBrush="#FF47472D" FontFamily="Sitka Heading" TextChanged="LastNameBox_TextChanged"/>
                         </Grid>
-                        <Grid Grid.Row="3" Margin="35 0">
-                            <Button x:Name="RegestratoinButton" Click="ButtonToMenu" IsEnabled="False" Content="Зарегистрироваться" Foreground="#FFF0DEAE" FontFamily="Sitka Heading" FontSize="20" HorizontalContentAlignment="Center" BorderBrush="#FF47472D" Background="#FF47472D" />
+                        <Grid Grid.Row="3" Margin="35 0 35 30">
+                            <PasswordBox x:Name="PasswordBox" materialDesign:HintAssist.Hint="Введите пароль" Style="{StaticResource MaterialDesignFloatingHintPasswordBox}" BorderBrush="#FF47472D" Background="#FFF0DEAE" Foreground="#FF47472D" CaretBrush="#FF47472D" SelectionBrush="#FF47472D" FontFamily="Sitka Heading" PasswordChanged="PasswordBox_PasswordChanged"/>
+                        </Grid>
+                        <Grid Grid.Row="4" Margin="35 0">
+                            <Button x:Name="RegestratoinButton" Click="RegestrationClick" IsEnabled="False" Content="Зарегистрироваться" Foreground="#FFF0DEAE" FontFamily="Sitka Heading" FontSize="20" HorizontalContentAlignment="Center" HorizontalAlignment="Left" BorderBrush="#FF47472D" Background="#FF47472D" />
+                            <Button x:Name="EntryButton" Click="EntryClick" IsEnabled="False" Content="  Войти  " Foreground="#FFF0DEAE" FontFamily="Sitka Heading" FontSize="20" HorizontalContentAlignment="Center" HorizontalAlignment="Right" BorderBrush="#FF47472D" Background="#FF47472D" />
                         </Grid>
                     </Grid>
             </Border>

@@ -80,5 +80,14 @@ namespace RestaurantWPF
 
         }
 
+        private void ButtonToProfile(object sender, RoutedEventArgs e)
+        {
+            Profile profile = new Profile();
+            profile.ProfileFirstName.Text = AppSettings.UserFirstName;
+            profile.ProfileLastName.Text = AppSettings.UserLastName;
+            profile.Show();
+            Hide();
+            this.Close();
+        }
     }
 }

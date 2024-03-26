@@ -38,24 +38,37 @@ namespace RestaurantWPF
         }
         private void LoadOrderDetails()
         {
+            using (SqlConnection connection = new SqlConnection(connectionString))
+            {
+                connection.Open();
+                using (SqlCommand cmd = new SqlCommand("GetOrderDetails", connection))
+                {
+                    cmd.CommandType = System.Data.CommandType.StoredProcedure;
+                    cmd.Parameters.Add(new SqlParameter("@client_id", System.Data.SqlDbType.Int));
+                    cmd.Parameters["@client_id"].Value = AppSettings.UserId;
+                    SqlDataAdapter adapter = new SqlDataAdapter(cmd);
+                    DataTable dataTable = new DataTable();
+                    adapter.Fill(dataTable);
+
+                    OrderDetailsGrid.ItemsSource = dataTable.DefaultView;
+                    cmd.ExecuteNonQuery();
+                }
+            }
 
             using (SqlConnection connection = new SqlConnection(connectionString))
             {
-                string query = "SELECT * FROM OrderDetailsView";
-                string query1 = "SELECT * FROM TotalOrderCostView";
-
-                SqlDataAdapter adapter = new SqlDataAdapter(query, connection);
-                DataTable dataTable = new DataTable();
-                adapter.Fill(dataTable);
-
-                SqlDataAdapter adapter1 = new SqlDataAdapter(query1, connection);
-                DataTable dataTable1 = new DataTable();
-                adapter1.Fill(dataTable1);
-
-
-                orderDetailsGrid.ItemsSource = dataTable.DefaultView;
-                TotalCost.ItemsSource = dataTable1.DefaultView;
-
+                connection.Open();
+                using (SqlCommand cmd = new SqlCommand("CalculateTotalCost", connection))
+                {
+                    cmd.CommandType = System.Data.CommandType.StoredProcedure;
+                    cmd.Parameters.Add(new SqlParameter("@client_id", System.Data.SqlDbType.Int));
+                    cmd.Parameters["@client_id"].Value = AppSettings.UserId;
+                    SqlDataAdapter adapter = new SqlDataAdapter(cmd);
+                    DataTable dataTable = new DataTable();
+                    adapter.Fill(dataTable);
+                    TotalCost.ItemsSource = dataTable.DefaultView;
+                    cmd.ExecuteNonQuery();
+                }
             }
         }
 
@@ -78,16 +91,7 @@ namespace RestaurantWPF
             {
                 MessageBox.Show("Вы успешно завершили заказ! До встречи!");
                 System.Windows.Application.Current.Shutdown();
-                using (SqlConnection connection = new SqlConnection(connectionString))
-                {
-                    string query = "delete from OrderItems";
-
-                    SqlDataAdapter adapter = new SqlDataAdapter(query, connection);
-                    DataTable dataTable = new DataTable();
-                    adapter.Fill(dataTable);
-
-                    orderDetailsGrid.ItemsSource = dataTable.DefaultView;
-                }
+               
             }
         }
 

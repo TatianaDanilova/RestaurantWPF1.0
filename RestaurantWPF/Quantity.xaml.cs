@@ -23,51 +23,17 @@ namespace RestaurantWPF
     /// </summary>
     public partial class Quantity : Window
     {
-        private OrderItems _currentOrderItem = new OrderItems();
-        private MenuItems _currentMenuItem = new MenuItems();
 
         private SqlConnection connection = new SqlConnection();
         public Quantity()
         {
             InitializeComponent();
-            DataContext = _currentMenuItem;
         }
 
         private void AddToOrder(object sender, RoutedEventArgs e)
-        {
-            Order order = new Order();
-
-            // Установите значения свойств модели OrderItems
-            _currentMenuItem.dish_name = DishNameTextBlock.Text;
-            _currentOrderItem.quantity = Convert.ToInt32(QuantityTextBox.Text);
-            _currentMenuItem.dish_price = Convert.ToInt32(DishPriceTextBlock.Text) * _currentOrderItem.quantity;
-            
-            string connectionString = "Data Source=DESKTOP-4HJV1J2;Initial Catalog=RestaurantDB;Integrated Security=True";
-            using (SqlConnection connection = new SqlConnection(connectionString))
-            {
-                connection.Open();
-                using (SqlCommand cmd = new SqlCommand("AddOrderItem", connection))
-                {
-                    cmd.CommandType = System.Data.CommandType.StoredProcedure;
-                    cmd.Parameters.Add(new SqlParameter("@dish_name", System.Data.SqlDbType.NVarChar, 100));
-                    cmd.Parameters.Add(new SqlParameter("@quantity", System.Data.SqlDbType.Int));
-                    cmd.Parameters["@dish_name"].Value = DishNameTextBlock.Text;
-                    cmd.Parameters["@quantity"].Value = Convert.ToInt32(QuantityTextBox.Text);
-
-                    cmd.ExecuteNonQuery();
-                }
-                try
-                {
-              //  DBEntities.GetContext().SaveChanges();
-                MessageBox.Show("Блюдо успешно добавлено в заказ");
-                }
-                catch (Exception ex)
-                {
-                    MessageBox.Show($"Ошибка: {ex.Message}");
-
-                }
-
-            }
+        {            
+            Manager manager = new Manager();
+            manager.AddToOrder(DishNameTextBlock.Text, Convert.ToInt32(QuantityTextBox.Text));
             Hide();
             this.Close();
         }
